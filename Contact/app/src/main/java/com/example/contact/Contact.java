@@ -7,35 +7,43 @@ public class Contact implements Serializable {
     private String name;
     private String phone;
     private String email;
-    public Contact(){
+
+    public Contact() {
     }
 
-    public Contact(String name, String phone,String email) {
+    public Contact(String name, String phone, String email) {
         this.name = name;
-        this.phone= phone;
-        this.email=email;
+        this.phone = phone;
+        this.email = email;
     }
-    public Contact(int id, String name, String phone, String email){
-        this.id =id;
-        this.name=name;
-        this.phone=phone;
-        this.email=email;
+
+    public Contact(int id, String name, String phone, String email) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
     }
-    public void setId(int id){
-        this.id=id;
+
+    public void setId(int id) {
+        this.id = id;
     }
-    public int getId(){
+
+    public int getId() {
         return id;
     }
+
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
+
     public String getName() {
         return name;
     }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     public String getPhone() {
         return phone;
     }

@@ -4,103 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".AddContactActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:background="@color/Blue"
-        android:gravity="center"
-        android:layout_height="50dp">
+        android:gravity="center">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:orientation="horizontal">
+
             <Button
+                android:id="@+id/btn_canceladd"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:id="@+id/btn_canceladd"
                 android:background="@drawable/cancel"></Button>
+
             <TextView
+                android:id="@+id/tv_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_add"
-                android:text="NEW CONTACT"
-                android:textColor="@color/black"
-                android:textAlignment="center"
                 android:layout_gravity="center"
-                android:textSize="20sp"
-                android:layout_weight="1">
-            </TextView>
+                android:layout_weight="1"
+                android:text="NEW CONTACT"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+
             <Button
+                android:id="@+id/btn_finish"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/check"
-                android:id="@+id/btn_finish"></Button>
+                android:background="@drawable/check"></Button>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp">
+        android:orientation="vertical">
+
         <ImageView
+            android:id="@+id/iv_avatar"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
-            android:id="@+id/iv_avatar"
             android:src="@drawable/person"></ImageView>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:src="@drawable/person_add"></ImageView>
+
         <EditText
+            android:id="@+id/edt_nameadd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:id="@+id/edt_nameadd"></EditText>
+            android:textSize="25sp"></EditText>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:orientation="horizontal">
+
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:src="@drawable/phone"></ImageView>
+
         <EditText
+            android:id="@+id/edt_mobileadd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edt_mobileadd"
-            android:textSize="25sp"
-            android:inputType="number"></EditText>
+            android:inputType="number"
+            android:textSize="25sp"></EditText>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_mail_black_24dp"></ImageView>
+
         <EditText
+            android:id="@+id/edt_emailadd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edt_emailadd"></EditText>
+            android:layout_height="wrap_content"></EditText>
     </LinearLayout>
 </LinearLayout>

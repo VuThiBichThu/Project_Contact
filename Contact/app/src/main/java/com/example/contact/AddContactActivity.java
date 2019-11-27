@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AddContactActivity extends AppCompatActivity {
-    EditText edtNameAdd,edtMobileAdd,edtEmailAdd;
-    Button btnCancel,btnFinish;
+    EditText edtNameAdd, edtMobileAdd, edtEmailAdd;
+    Button btnCancel, btnFinish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +39,16 @@ public class AddContactActivity extends AppCompatActivity {
                 String phoneAdd = edtMobileAdd.getText().toString();
                 String emailAdd = edtEmailAdd.getText().toString();
 
-                if (nameAdd.length()== 0) {
-                    Toast.makeText(AddContactActivity.this,"Insert Name",Toast.LENGTH_LONG).show();
-                }
-                else if (phoneAdd.length()==0)
-                {
-                    Toast.makeText(AddContactActivity.this,"Insert Phone Number",Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Contact contact = new Contact(nameAdd,phoneAdd,emailAdd);
+                if (nameAdd.length() == 0) {
+                    Toast.makeText(AddContactActivity.this, "Insert Name", Toast.LENGTH_LONG).show();
+                } else if (phoneAdd.length() == 0) {
+                    Toast.makeText(AddContactActivity.this, "Insert Phone Number", Toast.LENGTH_LONG).show();
+                } else {
+                    Contact contact = new Contact(nameAdd, phoneAdd, emailAdd);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("addback",contact);
+                    bundle.putSerializable("addback", contact);
                     Intent resultIntent = new Intent();
-                    resultIntent.putExtra("add",bundle);
+                    resultIntent.putExtra("add", bundle);
                     setResult(Activity.RESULT_OK, resultIntent);
                     finish();
                 }

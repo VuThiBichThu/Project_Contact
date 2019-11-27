@@ -9,12 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 public class Database extends SQLiteOpenHelper {
-    private static final int VERSION =1;
+    private static final int VERSION = 1;
     public static final String DB_NAME = "contacts_list";
     private Context context;
-    public Database (Context context){
-        super(context,DB_NAME,null,VERSION);
-        this.context=context;
+
+    public Database(Context context) {
+        super(context, DB_NAME, null, VERSION);
+        this.context = context;
     }
 
     @Override
@@ -24,25 +25,27 @@ public class Database extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db,int oldVersion, int newVersion){
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
+
     //add a new contact
-    public void addContact(Contact contact){
-        SQLiteDatabase db =this.getWritableDatabase();
+    public void addContact(Contact contact) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("NAME",contact.getName());
-        values.put("PHONE",contact.getPhone());
-        values.put("EMAIL",contact.getEmail());
-        db.insert("CONTACT",null,values);
+        values.put("NAME", contact.getName());
+        values.put("PHONE", contact.getPhone());
+        values.put("EMAIL", contact.getEmail());
+        db.insert("CONTACT", null, values);
         db.close();
     }
+
     //list contacts
-    public ArrayList<Contact> getAllContact(){
+    public ArrayList<Contact> getAllContact() {
         ArrayList<Contact> contacts = new ArrayList<Contact>();
         String script = "Select * from CONTACT";
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(script,null);
-        while (cursor.moveToNext()){
+        Cursor cursor = db.rawQuery(script, null);
+        while (cursor.moveToNext()) {
             Contact contact = new Contact();
             contact.setId(cursor.getInt(0));
             contact.setName(cursor.getString(1));
@@ -52,18 +55,20 @@ public class Database extends SQLiteOpenHelper {
         }
         return contacts;
     }
+
     //delete a contact
-    public void deleteDatabase(Contact contact){
+    public void deleteDatabase(Contact contact) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete("CONTACT","ID=?", new String[]{String.valueOf(contact.getId())});
+        db.delete("CONTACT", "ID=?", new String[]{String.valueOf(contact.getId())});
     }
+
     //update a contact
-    public int updateContact(Contact contact){
-        SQLiteDatabase db =this.getWritableDatabase();
+    public int updateContact(Contact contact) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("NAME",contact.getName());
-        contentValues.put("PHONE",contact.getPhone());
-        contentValues.put("EMAIL",contact.getEmail());
-        return db.update("CONTACT",contentValues,"ID=?",new String[]{String.valueOf(contact.getId())});
+        contentValues.put("NAME", contact.getName());
+        contentValues.put("PHONE", contact.getPhone());
+        contentValues.put("EMAIL", contact.getEmail());
+        return db.update("CONTACT", contentValues, "ID=?", new String[]{String.valueOf(contact.getId())});
     }
 }

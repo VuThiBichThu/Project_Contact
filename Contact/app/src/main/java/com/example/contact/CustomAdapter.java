@@ -18,34 +18,35 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
     private ArrayList<Contact> contacts;
     private int layoutResource;
 
-    public CustomAdapter(Context context, int resource,ArrayList<Contact> objects) {
+    public CustomAdapter(Context context, int resource, ArrayList<Contact> objects) {
         super(context, resource, objects);
-        this.context=context;
-        this.contacts=objects;
+        this.context = context;
+        this.contacts = objects;
         this.layoutResource = resource;
         arrayList = new ArrayList<>();
         this.arrayList.addAll(contacts);
     }
+
     @NonNull
     @Override
-    public View getView(final int i, View view, ViewGroup viewGroup){
-        LayoutInflater inflater= LayoutInflater.from(context);
-        view=inflater.inflate(layoutResource,null);
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        LayoutInflater inflater = LayoutInflater.from(context);
+        view = inflater.inflate(layoutResource, null);
         TextView name = (TextView) view.findViewById(R.id.tv_namecontact);
         name.setText(contacts.get(i).getName());
         return view;
     }
+
     // search contact
-    public void filter(String characterText){
+    public void filter(String characterText) {
         characterText = characterText.toLowerCase(Locale.getDefault());
         contacts.clear();
-        if(characterText.length()==0){
+        if (characterText.length() == 0) {
             contacts.addAll(arrayList);
-        }
-        else {
+        } else {
             contacts.clear();
-            for (Contact contact:arrayList){
-                if (contact.getName().toLowerCase(Locale.getDefault()).contains(characterText)){
+            for (Contact contact : arrayList) {
+                if (contact.getName().toLowerCase(Locale.getDefault()).contains(characterText)) {
                     contacts.add(contact);
                 }
             }
