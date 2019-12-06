@@ -36,21 +36,4 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
         name.setText(contacts.get(i).getName());
         return view;
     }
-
-    // search contact
-    public void filter(String characterText) {
-        characterText = characterText.toLowerCase(Locale.getDefault());
-        contacts.clear();
-        if (characterText.length() == 0) {
-            contacts.addAll(arrayList);
-        } else {
-            contacts.clear();
-            for (Contact contact : arrayList) {
-                if (contact.getName().toLowerCase(Locale.getDefault()).contains(characterText)) {
-                    contacts.add(contact);
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
 }

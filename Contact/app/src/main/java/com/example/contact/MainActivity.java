@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Contact> contacts;
     ListView lvContact;
     FloatingActionButton btnAdd;
-    CustomAdapter customAdapter;
+    CustomAdapter customAdapter,searchAdapter;
     EditText searchContact;
     int index;
 
@@ -58,8 +58,35 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String text = searchContact.getText().toString().toLowerCase(Locale.getDefault());
-                customAdapter.filter(text);
+                int textlength = charSequence.length();
+                final ArrayList<Contact> searchContacts = new ArrayList<Contact>();
+                for (Contact c : contacts) {
+                    if (textlength <= c.getName().length()) {
+                        if (c.getName().toLowerCase().contains(charSequence.toString().toLowerCase())) {
+                            searchContacts.add(c);
+                        }
+                    }
+                }
+                searchAdapter = new CustomAdapter(MainActivity.this, R.layout.row_listview, searchContacts);
+                lvContact.setAdapter(searchAdapter);
+                searchAdapter.notifyDataSetChanged();
+                lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        int indexSearch;
+                        for (indexSearch = 0; indexSearch < contacts.size(); indexSearch++) {
+                            if (contacts.get(indexSearch).getPhone() == searchContacts.get(i).getPhone()) {
+                                index = indexSearch;
+                                break;
+                            }
+                        }
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("edit", searchContacts.get(i));
+                        Intent intent = new Intent(MainActivity.this, EditContactActivity.class);
+                        intent.putExtra("editsend", bundle);
+                        startActivityForResult(intent, 1);
+                    }
+                });
             }
 
             @Override
@@ -112,5 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 customAdapter.notifyDataSetChanged();
             }
         }
+        lvContact.setAdapter(customAdapter);
+        searchContact.setText("");
     }
 }
