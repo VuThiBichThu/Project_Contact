@@ -1,15 +1,19 @@
 package com.example.contact;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.app.Activity;
 
 import android.content.Intent;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 
+import android.util.Log;
 import android.view.View;
 
 import android.widget.AdapterView;
@@ -141,5 +145,43 @@ public class MainActivity extends AppCompatActivity {
         }
         lvContact.setAdapter(customAdapter);
         searchContact.setText("");
+    }
+    public void verifyPermissions(String[] permissions){
+        Log.d(TAG, "verifyPermissions: asking user for permissions.");
+        ActivityCompat.requestPermissions(
+                MainActivity.this,
+                permissions,
+                REQUEST_CODE
+        );
+    }
+    public boolean checkPermission(String[] permission){
+        Log.d(TAG, "checkPermission: checking permissions for:" + permission[0]);
+
+        int permissionRequest = ActivityCompat.checkSelfPermission(
+                MainActivity.this,
+                permission[0]);
+
+        if(permissionRequest != PackageManager.PERMISSION_GRANTED){
+            Log.d(TAG, "checkPermission: \n Permissions was not granted for: " + permission[0]);
+            return false;
+        }else{
+            return true;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult: requestCode: " + requestCode);
+
+        switch(requestCode){
+            case REQUEST_CODE:
+                for(int i = 0; i < permissions.length; i++){
+                    if(grantResults[i] == PackageManager.PERMISSION_GRANTED){
+                        Log.d(TAG, "onRequestPermissionsResult: User has allowed permission to access: " + permissions[i]);
+                    }else{
+                        break;
+                    }
+                }
+                break;
+        }
     }
 }

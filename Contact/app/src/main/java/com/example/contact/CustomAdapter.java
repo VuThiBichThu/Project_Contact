@@ -1,10 +1,13 @@
 package com.example.contact;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +37,22 @@ public class CustomAdapter extends ArrayAdapter<Contact> {
         view = inflater.inflate(layoutResource, null);
         TextView name = (TextView) view.findViewById(R.id.tv_namecontact);
         name.setText(contacts.get(i).getName());
+        ImageView ivPhone = (ImageView) view.findViewById(R.id.iv_phone);
+        //call a contact
+        ivPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phone = contacts.get(i).getPhone();
+                if(((MainActivity)context).checkPermission(Init.PHONE_PERMISSIONS)){
+                    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phone, null));
+                    context.startActivity(callIntent);
+                }
+                else {
+                    ((MainActivity)context).verifyPermissions(Init.PHONE_PERMISSIONS);
+                }
+            }
+        });
+
         return view;
     }
 }
