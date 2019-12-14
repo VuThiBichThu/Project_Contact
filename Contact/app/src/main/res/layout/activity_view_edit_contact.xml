@@ -4,55 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".AddContactActivity">
-
+    tools:context=".ViewEditContactActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/Blue"
         android:gravity="center">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
             <Button
-                android:id="@+id/btn_cancel"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
+                android:id="@+id/btn_cancelview"
                 android:background="@drawable/cancel"></Button>
-
             <TextView
-                android:id="@+id/tv_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
                 android:textAlignment="center"
+                android:textSize="25sp"
                 android:textColor="@color/black"
-                android:textSize="20sp"></TextView>
-
+                android:layout_weight="1">
+            </TextView>
             <Button
-                android:id="@+id/btn_finish"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
-                android:background="@drawable/check"></Button>
+                android:id="@+id/btn_edit"
+                android:layout_gravity="right"
+                android:background="@drawable/edit"></Button>
 
         </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:layout_margin="16dp">
         <ImageView
-            android:id="@+id/iv_photo"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
@@ -61,56 +52,60 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:background="@drawable/custom_layout_shadow"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
-
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_gravity="bottom"
                 android:src="@drawable/person_edit"></ImageView>
-
-            <EditText
-                android:id="@+id/edt_nameedit"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"></EditText>
+                android:layout_marginLeft="5dp"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:id="@+id/tv_nameedit"></TextView>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp">
-
+            android:layout_height="50dp"
+            android:background="@drawable/custom_layout_shadow"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_gravity="bottom"
-                android:id="@+id/iv_message"
                 android:src="@drawable/message"></ImageView>
-
-            <EditText
-                android:id="@+id/edt_mobileedit"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textSize="20sp"></EditText>
-        </LinearLayout>
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_mobileedit"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:inputType="number"></TextView>
 
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp">
-
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@drawable/custom_layout_shadow">
             <ImageView
-                android:id="@+id/iv_email"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_gravity="bottom"
+                android:id="@+id/iv_email"
                 android:src="@drawable/mail"></ImageView>
-
-            <EditText
-                android:id="@+id/edt_emailedit"
+            <TextView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:textSize="20sp"
-                android:layout_height="wrap_content"></EditText>
+                android:textColor="@color/black"
+                android:id="@+id/tv_emailedit"></TextView>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
