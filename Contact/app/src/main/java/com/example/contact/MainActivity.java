@@ -132,10 +132,23 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE_VIEWEDIT) {
             if (resultCode == Activity.RESULT_OK) {
-                Bundle bundle = data.getBundleExtra("aftereditsend");
-                Contact contact = (Contact) bundle.getSerializable("afteredit");
-                db.updateContact(contact);
-                contacts.set(index, contact);
+                try {
+                    Bundle bundle = data.getBundleExtra("aftereditsend");
+                    Contact contactEdit = (Contact) bundle.getSerializable("afteredit");
+                    contacts.set(index, contactEdit);
+                    db.updateContact(contactEdit);
+                }
+                catch (Exception bundlenull){}
+
+                try {
+                    String confirm = data.getStringExtra("delete");
+                    if (confirm.equals("Delete Contact")) {
+                        db.deleteDatabase(contacts.get(index));
+                        contacts.remove(index);
+                    }
+                }
+                catch (Exception intentnull){}
+
                 customAdapter.notifyDataSetChanged();
             }
         }

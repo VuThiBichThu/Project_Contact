@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg_final"
     tools:context=".ViewEditContactActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,11 +31,11 @@
                 android:layout_weight="1">
             </TextView>
             <Button
-                android:layout_width="40dp"
+                android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:id="@+id/btn_edit"
+                android:id="@+id/btn_delete"
                 android:layout_gravity="right"
-                android:background="@drawable/edit"></Button>
+                android:background="@drawable/delete"></Button>
 
         </LinearLayout>
     </LinearLayout>
@@ -48,6 +49,14 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:src="@drawable/person"></ImageView>
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:background="@drawable/edit">
+
+        </Button>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,8 +67,9 @@
             android:layout_marginBottom="16dp"
             android:orientation="horizontal">
             <ImageView
-                android:layout_width="35dp"
+                android:layout_width="50dp"
                 android:layout_height="35dp"
+                android:paddingLeft="10dp"
                 android:src="@drawable/person_edit"></ImageView>
             <TextView
                 android:layout_width="match_parent"
@@ -76,8 +86,10 @@
             android:gravity="center"
             android:layout_marginBottom="16dp">
             <ImageView
-                android:layout_width="35dp"
+                android:layout_width="45dp"
                 android:layout_height="35dp"
+                android:paddingLeft="10dp"
+                android:id="@+id/iv_message"
                 android:src="@drawable/message"></ImageView>
             <TextView
                 android:layout_width="match_parent"
@@ -95,8 +107,9 @@
             android:gravity="center"
             android:background="@drawable/custom_layout_shadow">
             <ImageView
-                android:layout_width="35dp"
+                android:layout_width="45dp"
                 android:layout_height="35dp"
+                android:paddingLeft="10dp"
                 android:id="@+id/iv_email"
                 android:src="@drawable/mail"></ImageView>
             <TextView

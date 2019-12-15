@@ -16,8 +16,6 @@ public class EditContactActivity extends AppCompatActivity {
     EditText edtNameEdit, edtMobileEdit, edtEmailEdit;
     Button btnCancel, btnFinish;
     Contact contact;
-    ImageView ivMessage;
-    ImageView ivEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +28,6 @@ public class EditContactActivity extends AppCompatActivity {
 
         btnCancel = (Button) findViewById(R.id.btn_cancel);
         btnFinish = (Button) findViewById(R.id.btn_finish);
-
-        ivMessage = (ImageView) findViewById(R.id.iv_message);
-        ivEmail = (ImageView) findViewById(R.id.iv_email);
 
         Bundle bundle = getIntent().getBundleExtra("editsend");
         contact = (Contact) bundle.getSerializable("edit");
@@ -75,23 +70,6 @@ public class EditContactActivity extends AppCompatActivity {
             }
         });
 
-        ivEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setType("plain/text");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{contact.getEmail()});
-                startActivity(emailIntent);
-            }
-        });
 
-        ivMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String number = contact.getPhone();
-                Intent messageIntent = new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null));
-                startActivity(messageIntent);
-            }
-        });
     }
 }
